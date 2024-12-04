@@ -4,6 +4,8 @@ Description:
 This program allows users to find the shortest path between different locations on the Westfield State University campus. 
 It utilizes Dijkstra's algorithm to calculate the shortest path based on distances between different points on the campus.
 
+The Westfield State Campus (as a graph) is available to view what two points you want to get between.
+
 Usage:
 1.	Compile and run the Main.java file.
 2.	Follow the prompts to enter the starting and ending destinations by providing the corresponding letters (A-Z) of the locations on the campus.
