@@ -42,7 +42,7 @@ public class MinHeap
     }
 
     // heapify's up from index
-    public void heapify(MinHeap A, int index)
+    public void heapify(int index)
     {
         int parentIndex = getParentIndex(index);
         while(parentIndex >= 0)
@@ -50,15 +50,15 @@ public class MinHeap
             int leftIndex = getLeftChildIndex(parentIndex);
             int rightIndex = getRightChildIndex(parentIndex);
 
-            double parentDistance = A.arr[parentIndex].distance;
+            double parentDistance = arr[parentIndex].distance;
 
             double leftDistance = Double.MAX_VALUE;
-            if(A.arr[leftIndex] != null)
-                leftDistance = A.arr[leftIndex].distance;
+            if(arr[leftIndex] != null)
+                leftDistance = arr[leftIndex].distance;
 
             double rightDistance = Double.MAX_VALUE;
-            if(A.arr[rightIndex] != null)
-                rightDistance = A.arr[rightIndex].distance;
+            if(arr[rightIndex] != null)
+                rightDistance = arr[rightIndex].distance;
 
             if(leftDistance <= rightDistance && leftDistance < parentDistance)
             {
@@ -75,22 +75,22 @@ public class MinHeap
         }
     }
 
-    public void heapifyDown(MinHeap A, int parentIndex)
+    public void heapifyDown(int parentIndex)
     {
         while(parentIndex < size-2)
         {
             int leftIndex = getLeftChildIndex(parentIndex);
             int rightIndex = getRightChildIndex(parentIndex);
 
-            double parentDistance = A.arr[parentIndex].distance;
+            double parentDistance = arr[parentIndex].distance;
 
             double leftDistance = Double.MAX_VALUE;
-            if(A.arr[leftIndex] != null)
-                leftDistance = A.arr[leftIndex].distance;
+            if(arr[leftIndex] != null)
+                leftDistance = arr[leftIndex].distance;
 
             double rightDistance = Double.MAX_VALUE;
-            if(A.arr[rightIndex] != null)
-                rightDistance = A.arr[rightIndex].distance;
+            if(arr[rightIndex] != null)
+                rightDistance = arr[rightIndex].distance;
 
             if(leftDistance <= rightDistance && leftDistance < parentDistance)
             {
@@ -108,26 +108,26 @@ public class MinHeap
     }
 
 
-    public void insert(MinHeap A, Node node)
+    public void insert(Node node)
     {
         double value = node.distance;
-        if(A.size < A.capacity)
+        if(size < capacity)
         {
-            A.arr[A.size] = node;
-            A.size++;
-            heapify(A, A.size - 1);
+            arr[size] = node;
+            size++;
+            heapify(size - 1);
         }
     }
 
     //deletes from root
-    public Node delete(MinHeap A)
+    public Node delete()
     {
-        Node first = A.arr[0];
-        Node last = A.arr[size - 1];
-        A.arr[0] = last;
-        A.arr[--A.size] = null;
+        Node first = arr[0];
+        Node last = arr[size - 1];
+        arr[0] = last;
+        arr[--size] = null;
 
-        heapifyDown(A, 0);
+        heapifyDown(0);
 
         return first;
     }
@@ -141,8 +141,5 @@ public class MinHeap
         }
         System.out.println();
     }
-
-
-
 
 }
